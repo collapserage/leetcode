@@ -2,6 +2,7 @@
     "extends": "@tsconfig/recommended/tsconfig.json",
     "compilerOptions": {
         "lib": ["ESNext"],
+        "moduleDetection": "force",
         "noEmit": true,
         "strictNullChecks": false
     }

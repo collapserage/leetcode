@@ -1,13 +1,11 @@
 function twoSum(nums: number[], target: number): number[] {
-    const indexes = new Map()
+    const indexes: Record<number, number> = {}
 
-    for (let i = 0; i < nums.length; i++) {
-        const difference = target - nums[i]
-
-        if (indexes.has(nums[i])) {
-            return [indexes.get(nums[i]), i]
+    for (const [index, number] of nums.entries()) {
+        if (number in indexes) {
+            return [index, indexes[number]]
         }
 
-        indexes.set(difference, i)
+        indexes[target - number] = index
     }
 }

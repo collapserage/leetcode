@@ -7,7 +7,7 @@ function search(nums: number[], target: number): number {
 
         if (nums[middle] === target) {
             return middle
-        } else if (nums[left] <= nums[middle]) {
+        } else if (nums[left] <= nums[middle] /* left side is sorted */) {
             if (nums[left] <= target && target < nums[middle]) {
                 right = middle - 1
             } else {

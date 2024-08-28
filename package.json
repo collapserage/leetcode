@@ -2,11 +2,12 @@
     "scripts": {
         "lint": "prettier --write . && tsc"
     },
+    "dependencies": {
+        "datastructures-js": "^10.2.0",
+        "typescript": "^5.5.4"
+    },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.7",
         "prettier": "3.3.3"
-    },
-    "dependencies": {
-        "typescript": "^5.5.4"
     }
 }

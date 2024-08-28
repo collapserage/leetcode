@@ -11,14 +11,20 @@
  *     }
  * }
  */
-function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) {
-        return true
+function lowestCommonAncestor(
+    root: TreeNode | null,
+    p: TreeNode | null,
+    q: TreeNode | null,
+): TreeNode | null {
+    if (!root) {
+        return null
     }
 
-    if (!p || !q) {
-        return false
+    if (p.val < root.val && q.val < root.val) {
+        return lowestCommonAncestor(root.left, p, q)
+    } else if (p.val > root.val && q.val > root.val) {
+        return lowestCommonAncestor(root.right, p, q)
+    } else {
+        return root
     }
-
-    return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
 }

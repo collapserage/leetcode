@@ -11,14 +11,26 @@
  *     }
  * }
  */
-function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) {
-        return true
+function invertTree(root: TreeNode | null): TreeNode | null {
+    if (!root) {
+        return null
     }
 
-    if (!p || !q) {
-        return false
+    const stack = [root]
+
+    while (stack.length) {
+        const node = stack.pop()
+
+        ;[node.left, node.right] = [node.right, node.left]
+
+        if (node.left) {
+            stack.push(node.left)
+        }
+
+        if (node.right) {
+            stack.push(node.right)
+        }
     }
 
-    return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+    return root
 }

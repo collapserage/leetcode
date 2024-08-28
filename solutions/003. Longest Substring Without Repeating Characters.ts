@@ -1,5 +1,5 @@
 function lengthOfLongestSubstring(s: string): number {
-    const indexes = new Map()
+    const indexes = new Map<string, number>()
     let longest = 0
 
     for (let leftIndex = 0, rightIndex = 0; rightIndex < s.length; rightIndex++) {

@@ -11,14 +11,12 @@
  *     }
  * }
  */
-function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) {
-        return true
+function invertTree(root: TreeNode | null): TreeNode | null {
+    if (!root) {
+        return null
     }
 
-    if (!p || !q) {
-        return false
-    }
+    ;[root.left, root.right] = [invertTree(root.right), invertTree(root.left)]
 
-    return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+    return root
 }

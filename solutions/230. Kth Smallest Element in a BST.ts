@@ -11,25 +11,27 @@
  *     }
  * }
  */
-function levelOrder(root: TreeNode | null): number[][] {
-    const order: number[][] = []
+function kthSmallest(root: TreeNode | null, k: number): number {
+    let index = 1
+    let smallest = 0
 
-    function traversePreOrder(node: TreeNode | null, depth: number) {
-        if (!node) {
+    function traverseInOrder(node: TreeNode | null) {
+        if (!node || smallest) {
             return
         }
 
-        if (!order[depth]) {
-            order[depth] = [node.val]
-        } else {
-            order[depth].push(node.val)
+        traverseInOrder(node.left)
+
+        if (index === k) {
+            smallest = node.val
         }
 
-        traversePreOrder(node.left, depth + 1)
-        traversePreOrder(node.right, depth + 1)
+        index++
+
+        traverseInOrder(node.right)
     }
 
-    traversePreOrder(root, 0)
+    traverseInOrder(root)
 
-    return order
+    return smallest
 }
